@@ -14,8 +14,8 @@
        (filter #(string/ends-with? % file-ext))))
 
 (comment
-  (file-list "src/ascii_emoji/data/" ".edn") ;list of files ending in '.edn'
-  (file-list "src/ascii_emoji/data/" ".exe")) ;list of files ending in '.exe' (don't exist)
+  (file-list "resources/data/" ".edn") ;list of files ending in '.edn'
+  (file-list "resources/data/" ".exe")) ;list of files ending in '.exe' (don't exist)
 
 (defn load-edn
   "Load edn files from an io/reader `source` (filename or io/resource).
@@ -31,7 +31,7 @@
       (printf "Error parsing edn file '%s': %s\n" source (.getMessage e)))))
 
 (comment
-  (load-edn "src/ascii_emoji/data/dudes.edn") ;load the dudes.edn file
+  (load-edn "resources/data/dudes.edn") ;load the dudes.edn file
   (load-edn "path/doesnt/exist/file.edn")) ;file does not exist (nil)
 
 (defn build-db
@@ -39,7 +39,7 @@
    Use default project file-path and file-ext or
    specify the `file-path` and file-ext`"
   ([]
-   (build-db "src/ascii_emoji/data/" ".edn"))
+   (build-db "resources/data/" ".edn"))
   ([file-path file-ext]
    (let [edn-list (file-list file-path file-ext)]
      (into {} (map load-edn edn-list)))))
