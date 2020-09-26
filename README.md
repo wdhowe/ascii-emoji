@@ -1,6 +1,6 @@
 # ascii-emoji
 
-[![Build Status][gh-actions-badge]][gh-actions] [![Clojure version][clojure-v]](project.clj)
+[![Build Status][gh-actions-badge]][gh-actions] [![Clojars Project][clojars-badge]][clojars] [![Clojure version][clojure-v]](project.clj)
 
 Use ASCII Emoji, in Clojure!
 
