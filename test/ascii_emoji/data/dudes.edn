@@ -1,0 +1,4 @@
+{:dudes {:description "ASCII dudes performing actions, such as flipping a table."
+         :shrugdude1 "¯\\_(ツ)_/¯"
+         :tableflip1 "(╯°□°）╯︵ ┻━┻"
+         :tableflip2 "(┛◉Д◉)┛彡┻━┻"}}
