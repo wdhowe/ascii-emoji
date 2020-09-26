@@ -8,7 +8,7 @@
           exe-files (config/file-list "test/ascii_emoji/data/" ".exe")]
       ;; existing files
       (is (= 2 (count edn-files)))
-      (some #{"src/ascii_emoji/data/symbols.edn"} edn-files)
+      (is (some #{"test/ascii_emoji/data/symbols.edn"} edn-files))
       ;; files don't exist
       (is (= 0 (count exe-files)))
       (is (empty? exe-files)))))

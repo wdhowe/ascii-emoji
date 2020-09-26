@@ -5,4 +5,5 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]]
   :plugins [[lein-codox "0.10.7"]]
-  :repl-options {:init-ns ascii-emoji.core})
+  :repl-options {:init-ns ascii-emoji.core}
+  :resource-paths ["resources"])
