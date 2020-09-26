@@ -1,5 +1,7 @@
 # ascii-emoji
 
+[![Build Status][gh-actions-badge]][gh-actions] [![Clojure version][clojure-v]](project.clj)
+
 Use ASCII Emoji, in Clojure!
 
 ## Usage
@@ -59,3 +61,11 @@ with this stuff. If we meet some day, and you think this stuff is worth it,
 you can buy me a beer in return.
 
 ---
+
+<!-- Named page links below: /-->
+
+[gh-actions-badge]: https://github.com/wdhowe/ascii-emoji/workflows/ci%2Fcd/badge.svg
+[gh-actions]: https://github.com/wdhowe/ascii-emoji/actions
+[clojure-v]: https://img.shields.io/badge/clojure-1.10.0-blue.svg
+[clojars]: https://clojars.org/ascii-emoji
+[clojars-badge]: https://img.shields.io/clojars/v/ascii-emoji.svg
