@@ -1,17 +1,18 @@
 (ns ascii-emoji.config-test
   (:require [clojure.test :refer :all]
-            [ascii-emoji.config :as config]))
+            [ascii-emoji.config :as config]
+            [clojure.string :as string]))
 
-(deftest test-file-list
+(deftest test-full-paths
   (testing "Verify listing of test files."
-    (let [edn-files (config/file-list "test/ascii_emoji/data/" ".edn")
-          exe-files (config/file-list "test/ascii_emoji/data/" ".exe")]
+    (let [edn-files (config/full-paths (config/file-list))
+          no-files (config/full-paths [])]
       ;; existing files
-      (is (= 2 (count edn-files)))
-      (is (some #{"test/ascii_emoji/data/symbols.edn"} edn-files))
+      (is (= 3 (count edn-files)))
+      (is (string/includes? (first edn-files) "dudes.edn"))
       ;; files don't exist
-      (is (= 0 (count exe-files)))
-      (is (empty? exe-files)))))
+      (is (= 0 (count no-files)))
+      (is (empty? no-files)))))
 
 (deftest test-load-edn
   (testing "Verify edn file loading."

@@ -2,20 +2,28 @@
   "ASCII Emoji configuration and data loaders."
   (:gen-class)
   (:require [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [clojure.string :as string]))
+            [clojure.java.io :as io]))
 
 (defn file-list
-  "Return a lazy-seq of files from `file-path` that end in `file-ext`."
-  [file-path file-ext]
-  (->> (io/file file-path)
-       (file-seq)
-       (map str)
-       (filter #(string/ends-with? % file-ext))))
+  "Return a vector of edn file names containing ascii emojis."
+  []
+  ["data/dudes.edn"
+   "data/objects.edn"
+   "data/symbols.edn"])
 
 (comment
-  (file-list (io/resource "data") ".edn") ;list of files ending in '.edn'
-  (file-list (io/resource "data") ".exe")) ;list of files ending in '.exe' (don't exist)
+  (file-list))
+
+(defn full-paths
+  "Determine the full file paths given a sequence of `files` names."
+  [files]
+  (->> files
+       (map io/resource)
+       (map str)))
+
+(comment
+  (full-paths (file-list))
+  (full-paths []))
 
 (defn load-edn
   "Load edn files from an io/reader `source` (filename or io/resource).
@@ -36,12 +44,12 @@
 
 (defn build-db
   "Build the emoji-db. Load all edn data files into a map.
-   Use default project file-path and file-ext or
-   specify the `file-path` and file-ext`"
+   Use default project file-list or
+   specify the `files` as a sequence."
   ([]
-   (build-db (io/resource "data") ".edn"))
-  ([file-path file-ext]
-   (let [edn-list (file-list file-path file-ext)]
+   (build-db (file-list)))
+  ([files]
+   (let [edn-list (full-paths files)]
      (into {} (map load-edn edn-list)))))
 
 (comment
