@@ -11,7 +11,7 @@ Use ASCII Emoji, in Clojure!
 Leiningen/Boot Project file
 
 ```clojure
-[ascii-emoji "0.1.0"]
+[ascii-emoji "0.1.0-SNAPSHOT"]
 ```
 
 ### Start Using
