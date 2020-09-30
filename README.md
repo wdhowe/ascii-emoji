@@ -6,27 +6,98 @@ Use ASCII Emoji, in Clojure!
 
 ## Usage
 
+Get started using ASCII emojis.
+
 ### Installation
 
 Leiningen/Boot Project file
 
 ```clojure
-[ascii-emoji "0.1.0-SNAPSHOT"]
+[ascii-emoji "0.1.0"]
 ```
 
-### Start Using
+### Include the Library
 
 In the REPL
 
 ```clojure
-(require '[ascii-emoji.core :as emoji])
+(require '[ascii-emoji.core :as em])
 ```
 
 In your application
 
 ```clojure
 (ns my-app.core
-  (:require [ascii-emoji.core :as emoji]))
+  (:require [ascii-emoji.core :as em]))
+```
+
+### Use Emojis - Direct Data
+
+Use the emoji map directly.
+
+```clojure
+;; categories
+(keys em/emoji-db)
+
+;; all emojis in the "dudes" category
+(:dudes em/emoji-db)
+
+;; specific emoji in the dudes category
+(get-in em/emoji-db [:dudes :tableflip1])
+```
+
+### Use Emojis - Helper Functions
+
+Using the included helper functions to explore/access emojis.
+
+List names
+
+```clojure
+;; names of categories
+(em/names)
+
+;; names of emojis from the dudes category
+(em/names :dudes)
+```
+
+Describe categories
+
+```clojure
+;; describe all categories
+(em/describe)
+
+;; describe specific category
+(em/describe :dudes)
+```
+
+Show emojis
+
+```clojure
+;; show first emoji that matches the keyword (from all categories)
+(em/show :tableflip1)
+
+;; show the emoji from the specific category
+(em/show :tableflip1 :dudes)
+```
+
+Show all emojis
+
+```clojure
+;; show the entire emoji map
+(em/show-all)
+
+;; show all of the emojis from the category
+(em/show-all :dudes)
+```
+
+Search Emojis
+
+```clojure
+;; search the entire emoji map for the emoji name
+(em/search "table")
+
+;; search the specific category for the emoji name
+(em/search "table" :dudes)
 ```
 
 ## License
